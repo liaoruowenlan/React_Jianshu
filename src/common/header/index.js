@@ -10,6 +10,13 @@ import {
   SearchWrapper
 } from "./style";
 class index extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      focused: false
+    };
+  }
+
   render() {
     return (
       <HeaderStyle>
@@ -22,8 +29,14 @@ class index extends Component {
             <i className="iconfont">&#xe636;</i>
           </NavItem>
           <SearchWrapper>
-            <NavSearch />
-            <i className="iconfont">&#xe60b;</i>
+            <NavSearch
+              onFocus={this.onFocus}
+              onBlur={this.onBlur}
+              className={this.state.focused ? "focused" : ""}
+            />
+            <i className={this.state.focused ? "focused iconfont" : "iconfont"}>
+              &#xe60b;
+            </i>
           </SearchWrapper>
         </Nav>
         <Addtion>
@@ -35,6 +48,12 @@ class index extends Component {
       </HeaderStyle>
     );
   }
+  onFocus = () => {
+    this.setState(() => ({ focused: true }));
+  };
+  onBlur = () => {
+    this.setState(() => ({ focused: false }));
+  };
 }
 
 export default index;
