@@ -19,7 +19,8 @@ import {
 
 class Header extends Component {
   getListArea = () => {
-    if (this.props.focused) {
+    const {focused,list} = this.props;
+    if (focused) {
       return (
         <SearchInfo>
           <SearchInfoTitle>
@@ -28,7 +29,7 @@ class Header extends Component {
           </SearchInfoTitle>
           <SearchInfoList>
           {
-            this.props.list.map((item)=>{
+            list.map((item)=>{
               return(
                 <SearchInfoItem key={item}>{item}</SearchInfoItem>
               )
@@ -42,6 +43,7 @@ class Header extends Component {
     }
   };
   render() {
+    const {focused,onFocus,onBlur} = this.props;
     return (
       <HeaderStyle>
         <Logo />
@@ -54,11 +56,11 @@ class Header extends Component {
           </NavItem>
           <SearchWrapper>
             <NavSearch
-              onFocus={this.props.onFocus}
-              onBlur={this.props.onBlur}
-              className={this.props.focused ? "focused" : ""}
+              onFocus={onFocus}
+              onBlur={onBlur}
+              className={focused ? "focused" : ""}
             />
-            <i className={this.props.focused ? "focused iconfont" : "iconfont"}>
+            <i className={focused ? "focused iconfont" : "iconfont"}>
               &#xe60b;
             </i>
             {this.getListArea()}

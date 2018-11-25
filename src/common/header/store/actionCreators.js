@@ -2,6 +2,11 @@ import * as actionTypes from "./actionTypes";
 import { fromJS } from "immutable";
 import axios from "axios";
 
+const changList = (data)=>({
+  type:actionTypes.CHANGELIST,
+  data:fromJS(data)
+})
+
 export const searchFocus = () => ({
   type: actionTypes.SEARCH_FOCUS
 });
@@ -9,11 +14,6 @@ export const searchFocus = () => ({
 export const searchBlue = () => ({
   type: actionTypes.SEARCH_BLUE
 });
-
-const changList = (data)=>({
-  type:actionTypes.CHANGELIST,
-  data:fromJS(data)
-})
 
 export const getList = () => {
   return dispatch => {
