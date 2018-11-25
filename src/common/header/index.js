@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { actionCreators } from "./store";
 import {
   HeaderStyle,
   Logo,
@@ -52,16 +53,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onFocus() {
-      const action = {
-        type: "search_foucus"
-      };
-      dispatch(action);
+      dispatch(actionCreators.searchFocus());
     },
     onBlur() {
-      const action = {
-        type: "search_Blur"
-      };
-      dispatch(action);
+      dispatch(actionCreators.searchBlue());
     }
   };
 };
