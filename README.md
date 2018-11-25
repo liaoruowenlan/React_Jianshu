@@ -12,6 +12,8 @@
 
 使用 redux 的 combineReducers 来管理模块下的 reducer，而不是整个项目的 reducer 都放在一起。增加代码可读性、项目目录清晰。
 
+使用 immutable 保护数据，避免不小心改变 state 里面的数据。
+
 ### styled-components 是什么？
 
 - styled-components 是一个常用的 css in js 类库。和所有同类型的类库一样，通过 js 赋能解决了原生 css 所不具备的能力，比如变量、循环、函数等。
@@ -24,3 +26,4 @@
 - <b> react-redux </b> 项目全局状态管理。
 - <b> Redux DevTools extension </b> redux 调试工具。
 - <b> combineReducers </b> 全局项目管理 reducer。
+- <b> immutable </b> 保护数据。
