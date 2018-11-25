@@ -4,6 +4,8 @@
 
 整个项目使用的是 styled-components 来管理全局的 css 样式。
 
+使用的是 react-redux 来做全局的状态管理。
+
 文字图标则是使用了阿里的 iconfont 文字图标。
 
 ### styled-components 是什么？
@@ -15,3 +17,4 @@
 - <b> styled-components </b> 的使用。
 - <b> box-sizing: border-box </b> 的使用。 //盒模型的改变
 - <b> iconfont </b> 字体图标的时候用。
+- <b> react-redux </b> 项目全局状态管理。
