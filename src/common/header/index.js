@@ -19,23 +19,38 @@ import {
 
 class Header extends Component {
   getListArea = () => {
-    const {focused,list} = this.props;
-    if (focused) {
+    const {
+      focused,
+      list,
+      page,
+      totalPage,
+      onMouseEnter,
+      onMouseLeave,
+      mouseIn,
+      getPageList
+    } = this.props;
+    const newList = list.toJS();
+    const pageList = [];
+    if (newList.length) {
+      for (let i = (page - 1) * 10; i < page * 10; i++) {
+        if (newList[i]) {
+          pageList.push(
+            <SearchInfoItem key={newList[i]}>{newList[i]}</SearchInfoItem>
+          );
+        }
+      }
+    }
+
+    if (focused || mouseIn) {
       return (
-        <SearchInfo>
+        <SearchInfo onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
           <SearchInfoTitle>
             热门搜索
-            <SearchInfoSwitch>换一批</SearchInfoSwitch>
+            <SearchInfoSwitch onClick={() => getPageList(page, totalPage)}>
+              换一批
+            </SearchInfoSwitch>
           </SearchInfoTitle>
-          <SearchInfoList>
-          {
-            list.map((item)=>{
-              return(
-                <SearchInfoItem key={item}>{item}</SearchInfoItem>
-              )
-            })
-          }
-          </SearchInfoList>
+          <SearchInfoList>{pageList}</SearchInfoList>
         </SearchInfo>
       );
     } else {
@@ -43,7 +58,7 @@ class Header extends Component {
     }
   };
   render() {
-    const {focused,onFocus,onBlur} = this.props;
+    const { focused, onFocus, onBlur } = this.props;
     return (
       <HeaderStyle>
         <Logo />
@@ -80,7 +95,10 @@ class Header extends Component {
 const mapStateToProps = state => {
   return {
     focused: state.getIn(["header", "focused"]),
-    list: state.getIn(["header", "list"])
+    list: state.getIn(["header", "list"]),
+    page: state.getIn(["header", "page"]),
+    totalPage: state.getIn(["header", "totalPage"]),
+    mouseIn: state.getIn(["header", "mouseIn"])
   };
 };
 
@@ -92,6 +110,17 @@ const mapDispatchToProps = dispatch => {
     },
     onBlur() {
       dispatch(actionCreators.searchBlue());
+    },
+    onMouseEnter() {
+      dispatch(actionCreators.onMouseEnter());
+    },
+    onMouseLeave() {
+      dispatch(actionCreators.onMouseLeave());
+    },
+    getPageList(page, totalPage) {
+      page < totalPage
+        ? dispatch(actionCreators.changePage(page + 1))
+        : dispatch(actionCreators.changePage(1));
     }
   };
 };

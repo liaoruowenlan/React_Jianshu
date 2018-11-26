@@ -149,7 +149,7 @@ export const SearchInfoItem = styled.a`
   float: left;
   margin-right: 10px;
   margin-bottom: 10px;
-  :hover{
+  :hover {
     color: #333;
     border-color: #b4b4b4;
   }
