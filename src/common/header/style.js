@@ -130,6 +130,7 @@ export const SearchInfoTitle = styled.div`
   color: #969696;
 `;
 export const SearchInfoSwitch = styled.span`
+  cursor: pointer;
   float: right;
   font-size: 13px;
 `;

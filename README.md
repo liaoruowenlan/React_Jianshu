@@ -16,12 +16,17 @@
 
 使用 redux-thunk 来做异步 action 操作。
 
+使用 react-router 来做项目路由，跳转。
+
+项目模块分工，接口封装等。
+
 ### styled-components 是什么？
 
 - styled-components 是一个常用的 css in js 类库。和所有同类型的类库一样，通过 js 赋能解决了原生 css 所不具备的能力，比如变量、循环、函数等。
 
 #### 收获：
 
+- 整个 react 项目模块，代码分工，静态数据保存等。
 - <b> styled-components </b> 的使用。
 - <b> box-sizing: border-box </b> 的使用。 //盒模型的改变
 - <b> iconfont </b> 字体图标的时候用。
@@ -30,4 +35,5 @@
 - <b> combineReducers </b> 全局项目管理 reducer。
 - <b> immutable </b> 保护数据。
 - <b> axios </b> 获取异步数据。
-- <b> redux-thunk </b> 在action函数页面进行业务逻辑封装。
+- <b> redux-thunk </b> 在 action 函数页面进行业务逻辑封装。
+- <b> react-router </b> 做页面路由跳转。

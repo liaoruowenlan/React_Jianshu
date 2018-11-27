@@ -58,7 +58,7 @@ class Header extends Component {
     }
   };
   render() {
-    const { focused, onFocus, onBlur } = this.props;
+    const { focused, onFocus, onBlur, list } = this.props;
     return (
       <HeaderStyle>
         <Logo />
@@ -71,7 +71,7 @@ class Header extends Component {
           </NavItem>
           <SearchWrapper>
             <NavSearch
-              onFocus={onFocus}
+              onFocus={() => onFocus(list)}
               onBlur={onBlur}
               className={focused ? "focused" : ""}
             />
@@ -104,8 +104,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    onFocus() {
-      dispatch(actionCreators.getList());
+    onFocus(list) {
+      if (list.size === 0) {
+        dispatch(actionCreators.getList());
+      }
       dispatch(actionCreators.searchFocus());
     },
     onBlur() {
